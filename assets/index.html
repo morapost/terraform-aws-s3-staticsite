@@ -1,291 +1,174 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Terramino</title>
-    <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-      }
+<head>
+<title>Static Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
 
-      body {
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/w3images/coffeehouse.jpg");
+  min-height: 75%;
+}
 
-        background-image: url("https://raw.githubusercontent.com/hashicorp/learn-terraform-circleci/master/assets/background.png");
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+.menu {
+  display: none;
+}
+</style>
+</head>
+<body>
 
-      canvas {
-        border: 1px solid white;
-      }
-    </style>
-  </head>
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block w3-black">HOME</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#menu" class="w3-button w3-block w3-black">MENU</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#where" class="w3-button w3-block w3-black">WHERE</a>
+    </div>
+  </div>
+</div>
 
-  <body>
-    <canvas width="320" height="640" id="game"></canvas>
-    <script>
-      // https://tetris.fandom.com/wiki/Tetris_Guideline
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+    <span class="w3-tag">Open from 6am to 5pm</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px">the<br>Cafe</span>
+  </div>
+  <div class="w3-display-bottomright w3-center w3-padding-large">
+    <span class="w3-text-white">15 Adr street, 5015</span>
+  </div>
+</header>
 
-      // get a random integer between the range of [min,max]
-      // @see https://stackoverflow.com/a/1527820/2124254
-      function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
 
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE CAFE</span></h5>
+    <p>The Cafe was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>In addition to our full espresso and brew bar menu, we serve fresh made-to-order breakfast and lunch sandwiches, as well as a selection of sides and salads and other good stuff.</p>
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><i>"Use products from nature for what it's worth - but never too early, nor too late." Fresh is the new sweet.</i></p>
+      <p>Chef, Coffeeist and Owner: Liam Brown</p>
+    </div>
+    <img src="/w3images/coffeeshop.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <p><strong>Opening hours:</strong> everyday from 6am to 5pm.</p>
+    <p><strong>Address:</strong> 15 Adr street, 5015, NY</p>
+  </div>
+</div>
 
-      // generate a new tetromino sequence
-      // @see https://tetris.fandom.com/wiki/Random_Generator
-      function generateSequence() {
-        const sequence = ["I", "J", "L", "O", "S", "T", "Z"];
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE MENU</span></h5>
+  
+    <div class="w3-row w3-center w3-card w3-padding">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
+        <div class="w3-col s6 tablink">Eat</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+        <div class="w3-col s6 tablink">Drink</div>
+      </a>
+    </div>
 
-        while (sequence.length) {
-          const rand = getRandomInt(0, sequence.length - 1);
-          const name = sequence.splice(rand, 1)[0];
-          tetrominoSequence.push(name);
-        }
-      }
+    <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Bread Basket</h5>
+      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
+    
+      <h5>Honey Almond Granola with Fruits</h5>
+      <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
+    
+      <h5>Belgian Waffle</h5>
+      <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
+    
+      <h5>Scrambled eggs</h5>
+      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
+    
+      <h5>Blueberry Pancakes</h5>
+      <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
+    </div>
 
-      // get the next tetromino in the sequence
-      function getNextTetromino() {
-        if (tetrominoSequence.length === 0) {
-          generateSequence();
-        }
+    <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Coffee</h5>
+      <p class="w3-text-grey">Regular coffee 2.50</p><br>
+    
+      <h5>Chocolato</h5>
+      <p class="w3-text-grey">Chocolate espresso with milk 4.50</p><br>
+    
+      <h5>Corretto</h5>
+      <p class="w3-text-grey">Whiskey and coffee 5.00</p><br>
+    
+      <h5>Iced tea</h5>
+      <p class="w3-text-grey">Hot tea, except not hot 3.00</p><br>
+    
+      <h5>Soda</h5>
+      <p class="w3-text-grey">Coke, Sprite, Fanta, etc. 2.50</p>
+    </div>  
+    <img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
+  </div>
+</div>
 
-        const name = tetrominoSequence.pop();
-        const matrix = tetrominos[name];
+<!-- Contact/Area Container -->
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">WHERE TO FIND US</span></h5>
+    <p>Find us at some address at some place.</p>
+    <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
+    <p><span class="w3-tag">FYI!</span> We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste.</p>
+    <p><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
+      <p><button class="w3-button w3-black" type="submit">SEND MESSAGE</button></p>
+    </form>
+  </div>
+</div>
 
-        // I and O start centered, all others start in left-middle
-        const col = playfield[0].length / 2 - Math.ceil(matrix[0].length / 2);
+<!-- End page content -->
+</div>
 
-        // I starts on row 21 (-1), all others start on row 22 (-2)
-        const row = name === "I" ? -1 : -2;
+<!-- Footer -->
 
-        return {
-          name: name, // name of the piece (L, O, etc.)
-          matrix: matrix, // the current rotation matrix
-          row: row, // current row (starts offscreen)
-          col: col // current col
-        };
-      }
 
-      // rotate an NxN matrix 90deg
-      // @see https://codereview.stackexchange.com/a/186834
-      function rotate(matrix) {
-        const N = matrix.length - 1;
-        const result = matrix.map((row, i) =>
-          row.map((val, j) => matrix[N - j][i])
-        );
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
 
-        return result;
-      }
-
-      // check to see if the new matrix/row/col is valid
-      function isValidMove(matrix, cellRow, cellCol) {
-        for (let row = 0; row < matrix.length; row++) {
-          for (let col = 0; col < matrix[row].length; col++) {
-            if (
-              matrix[row][col] &&
-              // outside the game bounds
-              (cellCol + col < 0 ||
-                cellCol + col >= playfield[0].length ||
-                cellRow + row >= playfield.length ||
-                // collides with another piece
-                playfield[cellRow + row][cellCol + col])
-            ) {
-              return false;
-            }
-          }
-        }
-
-        return true;
-      }
-
-      // place the tetromino on the playfield
-      function placeTetromino() {
-        for (let row = 0; row < tetromino.matrix.length; row++) {
-          for (let col = 0; col < tetromino.matrix[row].length; col++) {
-            if (tetromino.matrix[row][col]) {
-              // game over if piece has any part offscreen
-              if (tetromino.row + row < 0) {
-                return showGameOver();
-              }
-
-              playfield[tetromino.row + row][tetromino.col + col] =
-                tetromino.name;
-            }
-          }
-        }
-
-        // check for line clears starting from the bottom and working our way up
-        for (let row = playfield.length - 1; row >= 0; ) {
-          if (playfield[row].every(cell => !!cell)) {
-            // drop every row above this one
-            for (let r = row; r >= 0; r--) {
-              playfield[r] = playfield[r - 1];
-            }
-          } else {
-            row--;
-          }
-        }
-
-        tetromino = getNextTetromino();
-      }
-
-      // show the game over screen
-      function showGameOver() {
-        cancelAnimationFrame(rAF);
-        gameOver = true;
-
-        context.fillStyle = "black";
-        context.globalAlpha = 0.75;
-        context.fillRect(0, canvas.height / 2 - 30, canvas.width, 60);
-
-        context.globalAlpha = 1;
-        context.fillStyle = "white";
-        context.font = "36px monospace";
-        context.textAlign = "center";
-        context.textBaseline = "middle";
-        context.fillText("GAME OVER!", canvas.width / 2, canvas.height / 2);
-      }
-
-      const canvas = document.getElementById("game");
-      const context = canvas.getContext("2d");
-      const grid = 32;
-      const tetrominoSequence = [];
-
-      // keep track of what is in every cell of the game using a 2d array
-      // tetris playfield is 10x20, with a few rows offscreen
-      const playfield = [];
-
-      // populate the empty state
-      for (let row = -2; row < 20; row++) {
-        playfield[row] = [];
-
-        for (let col = 0; col < 10; col++) {
-          playfield[row][col] = 0;
-        }
-      }
-
-      // how to draw each tetromino
-      // @see https://tetris.fandom.com/wiki/SRS
-      const tetrominos = {
-        I: [[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]],
-        J: [[1, 0, 0], [1, 1, 1], [0, 0, 0]],
-        L: [[0, 0, 1], [1, 1, 1], [0, 0, 0]],
-        O: [[1, 1], [1, 1]],
-        S: [[0, 1, 1], [1, 1, 0], [0, 0, 0]],
-        Z: [[1, 1, 0], [0, 1, 1], [0, 0, 0]],
-        T: [[0, 1, 0], [1, 1, 1], [0, 0, 0]]
-      };
-
-      // color of each tetromino
-      const colors = {
-        I: "#623CE4",
-        O: "#7C8797",
-        T: "#00BC7F",
-        S: "#CA2171",
-        Z: "#1563ff",
-        J: "#00ACFF",
-        L: "white"
-      };
-
-      let count = 0;
-      let tetromino = getNextTetromino();
-      let rAF = null; // keep track of the animation frame so we can cancel it
-      let gameOver = false;
-
-      // game loop
-      function loop() {
-        rAF = requestAnimationFrame(loop);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-
-        // draw the playfield
-        for (let row = 0; row < 20; row++) {
-          for (let col = 0; col < 10; col++) {
-            if (playfield[row][col]) {
-              const name = playfield[row][col];
-              context.fillStyle = colors[name];
-
-              // drawing 1 px smaller than the grid creates a grid effect
-              context.fillRect(col * grid, row * grid, grid - 1, grid - 1);
-            }
-          }
-        }
-
-        // draw the active tetromino
-        if (tetromino) {
-          // tetromino falls every 35 frames
-          if (++count > 35) {
-            tetromino.row++;
-            count = 0;
-
-            // place piece if it runs into anything
-            if (!isValidMove(tetromino.matrix, tetromino.row, tetromino.col)) {
-              tetromino.row--;
-              placeTetromino();
-            }
-          }
-
-          context.fillStyle = colors[tetromino.name];
-
-          for (let row = 0; row < tetromino.matrix.length; row++) {
-            for (let col = 0; col < tetromino.matrix[row].length; col++) {
-              if (tetromino.matrix[row][col]) {
-                // drawing 1 px smaller than the grid creates a grid effect
-                context.fillRect(
-                  (tetromino.col + col) * grid,
-                  (tetromino.row + row) * grid,
-                  grid - 1,
-                  grid - 1
-                );
-              }
-            }
-          }
-        }
-      }
-
-      // listen to keyboard events to move the active tetromino
-      document.addEventListener("keydown", function(e) {
-        if (gameOver) return;
-
-        // left and right arrow keys (move)
-        if (e.which === 37 || e.which === 39) {
-          const col = e.which === 37 ? tetromino.col - 1 : tetromino.col + 1;
-
-          if (isValidMove(tetromino.matrix, tetromino.row, col)) {
-            tetromino.col = col;
-          }
-        }
-
-        // up arrow key (rotate)
-        if (e.which === 38) {
-          const matrix = rotate(tetromino.matrix);
-          if (isValidMove(matrix, tetromino.row, tetromino.col)) {
-            tetromino.matrix = matrix;
-          }
-        }
-
-        // down arrow key (drop)
-        if (e.which === 40) {
-          const row = tetromino.row + 1;
-
-          if (!isValidMove(tetromino.matrix, row, tetromino.col)) {
-            tetromino.row = row - 1;
-
-            placeTetromino();
-            return;
-          }
-
-          tetromino.row = row;
-        }
-      });
-
-      // start the game
-      rAF = requestAnimationFrame(loop);
-    </script>
-  </body>
+</body>
 </html>
