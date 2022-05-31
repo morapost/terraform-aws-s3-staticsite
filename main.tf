@@ -57,7 +57,7 @@ resource "aws_s3_bucket_policy" "policy" {
 EOF
 }
 
-resource "aws_s3_object" "webapp" {
+resource "aws_s3_object" "staticsite" {
   acl          = "public-read"
   key          = "index.html"
   bucket       = aws_s3_bucket.bucket.id
